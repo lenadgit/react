@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.15/browser.js"></script>
+
+</head>
+<body>
+
+
+
+	<div class = "wrapper">
+		<header class = "header">
+<div class = "navbar">
+	<div class = "logo"></div>
+	<div id="menu"></div>
+	<div class = "wrapper-heading">
+	<h1 id = "main-heading"></h1>
+	<p id = "under-heading"></p>
+	</div>
+</div>
+		</header>
+
+<div id = "first-section"></div> 
+<div id = "second-section"></div>
+<div id = "third-section"></div>
+</div> 
+
+
+<footer class = "footer">
+	<div class = "footer-inner">
+		<div class = "footer-contacts">
+			Mobile: 0986666666 <br>
+			E-mail: mail@gmail.com <br>
+			Skype: MySkypeApp
+		</div>
+	</div>
+</footer>
+	</div>
+	<script type="text/babel">
+       var SKILLS = [
+            {
+                id: 1,
+				name: "HTML5",
+				level: 8
+            }, {
+                id: 2,
+               	name: "CSS3",
+               	level: 5
+            }, {
+                id: 3,
+                name: "JavaScript",
+                level: 10
+            }, {
+                id: 4,
+                name: "ReactJS",
+                level: 8
+            }, {
+                id: 5,
+				name: "AngularJS",
+				level: 8
+            }
+        ];
+
+
+
+		var Menu = React.createClass({
+			render: function(){
+				return <li>{this.props.name}</li>;
+			} 
+		});
+
+		ReactDOM.render(
+			<div>
+			<Menu name = "Home"/>
+			<Menu name = "About"/>
+			<Menu name = "Skills"/>
+			<Menu name = "Contacts"/>
+			</div>,
+			document.getElementById("menu")
+			);
+
+		var Heading = React.createClass({
+				render: function(){
+				return <h1>Name Surname</h1>;
+			} 
+		});
+
+		ReactDOM.render(
+			<Heading />,
+			document.getElementById("main-heading")
+			);
+
+		var Underheading = React.createClass({
+				render: function(){
+				return <p>Frontend Developer</p>;
+			} 
+		});
+
+		ReactDOM.render(
+			<Underheading />,
+			document.getElementById("under-heading")
+			);	
+
+
+
+
+		var Firstsection = React.createClass({
+				render: function(){					
+				return (<div>
+					<h2 className = "second-heading">About</h2>
+					<div className = "second-block">
+					<h3 className = "third-heading">Goals</h3>
+					<p className = "second-block-text">
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					</p>
+					</div>
+					<div className = "second-block">
+					<img src = "img/avatar.png" />
+					</div>
+					<div className = "second-block">
+					<h3 className = "third-heading">Dreams</h3>
+					<p className = "third-block-text">
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					</p>
+					</div>
+					</div>)						
+			} 
+		});
+
+		ReactDOM.render(
+			<Firstsection />,
+			document.getElementById("first-section")
+			);	
+
+			var Secondsection = React.createClass({
+				render: function(){					
+				return (<div>
+					<h2 className = "second-heading">Skills</h2>
+					<div id = "skills-list"></div>
+					</div>)						
+			} 
+		});
+
+		ReactDOM.render(
+			<Secondsection />,
+			document.getElementById("second-section")
+			);	
+
+		var Thirdsection = React.createClass({
+			handleSend: function(event){
+				console.log(event.target.value);
+			},
+				render: function(){					
+				return (<div>
+					<h2 className = "second-heading">Contacts</h2>
+					<div id = "contact-form">
+											<form action = "" name = "" >
+			<label className = "label">Phone number</label>
+			<br/>
+			<input type = "text" placeholder = "+380966666666" className = "inputfield" />
+			<br/>
+			<label className = "label">E-mail</label>
+			<br/>
+			<input type = "email" placeholder = "mail@gmail.com" className = "inputfield"/>
+			<br/>
+			<label className = "label">Skype</label>
+			<br/>
+			<input type = "text" placeholder = "MySkypeApp" className = "inputfield"/>
+			<br/>
+			<input type = "button" value = "SEND" className = "submit" onClick = {this.handleSend}/>	
+					</form>
+					</div>
+
+					</div>)						
+			} 
+		});
+
+		ReactDOM.render(
+			<Thirdsection />,
+			document.getElementById("third-section")
+			);
+
+	
+	var SkillsList = React.createClass({
+				render: function(){
+					return (
+					<div>
+					<ul>
+					{
+						SKILLS.map(function(el) {
+							return <li> {el.name} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{el.level}</li>
+						})
+					}
+					</ul>
+					</div>
+					);
+				}
+		});	
+			ReactDOM.render(
+			<SkillsList />,
+			document.getElementById("skills-list")
+			);	
+
+
+			//var Contacts = React.createClass({
+				//render: function(){					
+				//return (<div>
+					//</div>)						
+			//} 
+		//});	
+				//ReactDOM.render(
+			//<Contacts />,
+			//document.getElementById("contact-form")
+			//);						
+
+	</script>
+</body>
+</html>
